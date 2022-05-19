@@ -7,7 +7,7 @@ function BlockChain() {
     return (
         <div className='block-chain'>
             <ol>
-                {[...Array(15)].map((_, i) => <li key={i}><Block nth={i + 1} /></li>)}
+                {[...Array(15)].map((_, i) => <li key={i}><Block nth={i} /></li>)}
             </ol>
         </div>
     )

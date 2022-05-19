@@ -1,7 +1,7 @@
 import React from 'react';
 import BlockChain from './BlockChain';
 import Mask from './Mask';
-import DescriptionsViewer from './DescriptionsViewr'
+import DescriptionsViewer from './Descriptions'
 import './css/App.css';
 // import LeaderLine from 'leader-line-new';
 
@@ -16,9 +16,7 @@ function App() {
     return (
         <div className='App'>
             <DescriptionsViewer>
-                <Mask>
-                    <BlockChain />
-                </Mask>
+                <BlockChain />
             </DescriptionsViewer>
         </div>
     );  

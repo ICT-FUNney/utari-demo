@@ -30,8 +30,8 @@ type Props = {
     children: JSX.Element
 };
 
-const Mask: React.FC<Props> = ({ children }) => {
-    const value = useMask();
+const Mask: React.FC = () => {
+    const value = React.useContext(MaskCtx);
     
     function handleClick() {
         for (const method of value.methodsOnDisappear) {
@@ -49,11 +49,16 @@ const Mask: React.FC<Props> = ({ children }) => {
     });
 
     const mask = (value.displayMask) ? <div id='app-mask' onClick={handleClick}></div> : null;
+    return mask;
+}
+
+export const MaskCtxProvider: React.FC<Props> = ({children}) => {
+    const maskValue = useMask();
     return (
-        <MaskCtx.Provider value={value}>
-            {mask}
+        <MaskCtx.Provider value={maskValue}>
             {children}
         </MaskCtx.Provider>
     )
 }
+
 export default Mask;

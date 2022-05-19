@@ -27,42 +27,47 @@
             font-size: 25px;
             color: white;
         }
-    }
+    }   
+}
 
-        .block-desc {
-            width: 300px;
-            height: 600px;
-            background-color: white;
-            border-radius: 10px;
-            position: absolute;
-            top: 0; 
-            z-index: 10; //画面の一番手前にしたいため
-            display: flex;
-            flex-direction: column;
-            .block-title {
-                background-color: rgb(142, 148, 227);
-                h2 {
-                    margin: 0;
-                    text-align: center;
-                }
-            }
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            ol {
-                width: 98%;
-                height: 90%;
+.App {
+    .block-desc {
+        width: 500px;
+        height: 800px;
+        background-color: white;
+        border: 1px solid black;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+
+        .block-title {
+            background-color: rgb(142, 148, 227);
+
+            h2 {
                 margin: 0;
-                padding: 0;
-                list-style-type: none;
-                place-items: center;
-                overflow: scroll;
-                
-                li {
-                    width: 100%;
-                    height: 50px;
-                    margin: 5px auto;
-                }
+                text-align: center;
+                width: 480px;
             }
-        }    
+        }
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        ol {
+            width: 98%;
+            height: 90%;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            place-items: center;
+            overflow: scroll;
+
+            li {
+                width: 100%;
+                height: 50px;
+                margin: 5px auto;
+            }
+        }
+    }
 }

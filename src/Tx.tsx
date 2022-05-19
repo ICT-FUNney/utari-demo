@@ -1,37 +1,52 @@
 import React from "react";
 import './css/Tx.css';
 import { MaskCtx } from "./Mask";
+import { DescriptionsCtx } from './Descriptions';
+import { Button } from './generals';
 
-type Props = {
+type BlockProps = {
     nth: number //何番目に作られたブロックか
 };
 
-const Tx: React.FC<Props> = ({ nth }) => {
-    const [isDescribed, setIsDescribed] = React.useState(false);
-    const txDesc = (isDescribed) ? <TxDescription nth={nth} /> : null;
-    const maskValue = React.useContext(MaskCtx);
+const Tx: React.FC<BlockProps> = ({ nth }) => {
+    
+    const maskValue = React.useContext(MaskCtx); //消したい
+    const descriptionsValue = React.useContext(DescriptionsCtx);
+    const txId = 'tx' + nth;
     function handleClick() {
-        setIsDescribed(true);
-        let methods = maskValue.methodsOnDisappear;
-        methods.push(() => { setIsDescribed(false) });
-        maskValue.setMethodsOnDisappear(methods);
+        const txDesc = <TxDescription key={txId} nth={nth} onDisappear={ onDescDisappear } />;
+        
+        maskValue.setMethodsOnDisappear((prev) => {
+            return [
+                ...prev,
+                onDescDisappear
+            ];
+        });
+        descriptionsValue.addDescription(txId, txDesc);
     }
-
+    
+    function onDescDisappear() {
+        descriptionsValue.removeDescription(txId);
+    }
+    
     return (
         <div className='tx-container'>
             <div className='tx' onClick={handleClick}>
-                <h3>{nth}</h3>
+                <h3>{nth + 1}</h3>
             </div>
-            {txDesc}
         </div>
     )
 }
 
-
-const TxDescription: React.FC<Props> = ({nth}) => {
+type BlockDescProps = {
+    nth: number, //何番目に作られたブロックか
+    onDisappear: () => void
+};
+const TxDescription: React.FC<BlockDescProps> = ({ nth, onDisappear }) => {
     return (
-        <div className='tx-desc'>
-            <h3></h3>
+        <div className='tx-desc center'>
+            <Button className='close-button' text='X' onClick={onDisappear}/>
+            <h3>トランザクション{nth + 1}の情報</h3>
         </div>
     )
 }

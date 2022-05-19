@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "generals.css",
+	"sources": [
+		"../scss/generals.scss"
+	],
+	"names": [],
+	"mappings": "AACA,AAAA,aAAa,AAAC,CACV,MAAM,CAAE,aAAa,CACxB"
+}
