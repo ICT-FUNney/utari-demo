@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import BlockChain from './BlockChain';
+import Mask from './Mask';
+import DescriptionsViewer from './DescriptionsViewr'
+import './css/App.css';
+// import LeaderLine from 'leader-line-new';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    React.useEffect(() => {
+        const appMask = document.getElementById('app-mask');
+        if (appMask) {
+            appMask.onclick = () => { appMask.classList.add('invisible'); };
+        }
+    }, []);
+  
+    return (
+        <div className='App'>
+            <DescriptionsViewer>
+                <Mask>
+                    <BlockChain />
+                </Mask>
+            </DescriptionsViewer>
+        </div>
+    );  
 }
 
 export default App;
