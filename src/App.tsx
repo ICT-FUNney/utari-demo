@@ -1,5 +1,5 @@
 import React from 'react';
-import BlockChain from './BlockChain';
+import BlockChain from './BlockChain/BlockChain';
 import Mask from './Mask';
 import DescriptionsViewer from './Descriptions'
 import './css/App.css';

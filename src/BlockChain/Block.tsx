@@ -1,8 +1,8 @@
 import React from 'react';
-import './css/Block.css';
+import '../css/Block.css';
 import Tx from './Tx';
-import { MaskCtx } from './Mask';
-import { DescriptionsCtx } from './Descriptions';
+import { MaskCtx } from '../Mask';
+import { DescriptionsCtx } from '../Descriptions';
 
 type Props = {
     nth: number //何番目に作られたブロックか
