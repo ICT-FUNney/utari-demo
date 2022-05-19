@@ -24,5 +24,6 @@
   "include": [
     "src"
   , "lib",
-  ]
+  ],
+  "extends": "./src/BlockChain.tsconfig.json"
 }

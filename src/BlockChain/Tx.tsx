@@ -1,8 +1,8 @@
 import React from "react";
-import './css/Tx.css';
-import { MaskCtx } from "./Mask";
-import { DescriptionsCtx } from './Descriptions';
-import { Button } from './generals';
+import '../css/Tx.css';
+import { MaskCtx } from "../Mask";
+import { DescriptionsCtx } from '../Descriptions';
+import { Button } from '../generals';
 
 type BlockProps = {
     nth: number //何番目に作られたブロックか
@@ -45,8 +45,26 @@ type BlockDescProps = {
 const TxDescription: React.FC<BlockDescProps> = ({ nth, onDisappear }) => {
     return (
         <div className='tx-desc center'>
-            <Button className='close-button' text='X' onClick={onDisappear}/>
             <h3>トランザクション{nth + 1}の情報</h3>
+            <ul>
+                <details>
+                    <summary>バージョン</summary>
+                    xxxx
+                </details>
+                <details>
+                    <summary>インプット</summary>
+                    xxxxxx
+                </details>
+                <details>
+                    <summary>アウトプット</summary>
+                    xxxxxx
+                </details>
+                <details>
+                    <summary>ロックタイム</summary>
+                    xxxxxx
+                </details>
+            </ul>
+            <Button className='close-button' text='X' onClick={onDisappear}/>
         </div>
     )
 }
