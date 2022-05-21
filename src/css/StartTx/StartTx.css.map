@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "StartTx.css",
+	"sources": [
+		"../../scss/StartTx/StartTx.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,SAAS,AAAC,CACN,KAAK,CAAE,MAAM,CACb,MAAM,CAAE,MAAM,CACd,MAAM,CAAE,eAAe,CACvB,OAAO,CAAE,IAAI,CAEhB"
+}

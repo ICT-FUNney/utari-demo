@@ -1,6 +1,6 @@
 // import React from 'react';
 import Block from "./Block";
-import '../css/BlockChain.css';
+import '../css/BlockChain/BlockChain.css';
 
 
 function BlockChain() {

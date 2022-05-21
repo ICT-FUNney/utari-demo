@@ -22,8 +22,8 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  , "lib",
+    "src",
+  // , "lib",
   ],
   "extends": "./src/BlockChain/tsconfig.json"
 }

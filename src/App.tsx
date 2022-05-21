@@ -1,9 +1,9 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BlockChain from './BlockChain/BlockChain';
-import Mask from './Mask';
+import StartTx from './StartTx/StartTx';
 import DescriptionsViewer from './Descriptions'
 import './css/App.css';
-// import LeaderLine from 'leader-line-new';
 
 function App() {
     React.useEffect(() => {
@@ -16,7 +16,12 @@ function App() {
     return (
         <div className='App'>
             <DescriptionsViewer>
-                <BlockChain />
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<StartTx />}/>
+                        <Route path='/block-chain' element={<BlockChain />}/>
+                    </Routes>
+                </BrowserRouter>
             </DescriptionsViewer>
         </div>
     );  

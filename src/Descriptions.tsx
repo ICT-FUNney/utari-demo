@@ -1,5 +1,6 @@
 import React from "react";
-import Mask, {MaskCtxProvider} from './Mask';
+import Mask, { MaskCtx, MaskCtxProvider } from './Mask';
+import { FlashMessage } from './generals';
 
 type Props = {
     children: JSX.Element
@@ -9,10 +10,13 @@ interface DescriptionsContextInterfece {
     descriptions: { [key: string]: JSX.Element },
     addDescription: (key: string, desc: JSX.Element) => void
     removeDescription: (key: string) => void,
+    // addMethodOnDisappear: (callBack: () => void) => void,
+    callFlashMessage: (message: string, type: string) => void,
 }
 
 function useDescriptions() {
     const [descriptions, setDescriptions] = React.useState({} as { [key: string]: JSX.Element });
+    // const maskValue = React.useContext(MaskCtx);
     function addDescription(key: string, desc: JSX.Element) {
         setDescriptions((prev) => {
             return {
@@ -20,6 +24,8 @@ function useDescriptions() {
                 [key]: desc
             }
         });
+        
+        // maskValue.setDisplayMask(true);
     }
     
     function removeDescription(key: string) {
@@ -31,10 +37,30 @@ function useDescriptions() {
         });
     }
 
+    // function addMethodOnDisappear(callBack: () => void) {
+    //     maskValue.setMethodsOnDisappear((prev) => {
+    //         return [
+    //             ...prev,
+    //             callBack
+    //         ];
+    //     });
+    // }
+
+    function callFlashMessage(message: string, type: string) {
+        const flashMessage = <FlashMessage key='id' message={message} type={type} />
+        const id = 'flash-message';
+        addDescription(id, flashMessage);
+        setTimeout(() => {
+            removeDescription(id);
+        }, 10000);
+    }
+
     return {
         descriptions,
         addDescription,
         removeDescription,
+        // addMethodOnDisappear,
+        callFlashMessage
     }
 }
 

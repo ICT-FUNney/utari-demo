@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/Block.css';
+import '../css/BlockChain/Block.css';
 import Tx from './Tx';
 import { MaskCtx } from '../Mask';
 import { DescriptionsCtx } from '../Descriptions';
@@ -16,7 +16,7 @@ const Block: React.FC<Props> = ({ nth }) => {
     
     function handleClick() {
         const blockDesc = <BlockDescription key={ blockId } nth={nth} />
-        
+        // descriptionsValue.addMethodOnDisappear(() => { descriptionsValue.removeDescription(blockId); });
         maskValue.setDisplayMask(true);
         maskValue.setMethodsOnDisappear((prev) => {
             return [

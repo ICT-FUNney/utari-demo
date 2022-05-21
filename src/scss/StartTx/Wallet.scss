@@ -1,0 +1,54 @@
+.wallet {
+    width: 300px;
+    height: 500px;
+    border-radius: 5px;
+    background-color: white;
+    position: absolute; //仮
+    top: 50%; //仮
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content:space-around;
+        align-items: center;
+        height: 300px;
+
+        .submit {
+            width: 80px;
+            height: 50px;
+            font-size: 20px;
+        }
+    }
+
+}
+
+.confirm-tx {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .tx-table {
+        width: 90%;
+        border: 1px solid black;
+        margin: auto;
+
+        .th {
+            border: 1px splid black;
+        }
+    }
+
+    .submit {
+        width: 80px;
+        height: 40px;
+        margin: auto;
+        margin-top: 0;
+    }
+}

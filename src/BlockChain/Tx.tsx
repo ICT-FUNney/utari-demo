@@ -1,5 +1,5 @@
 import React from "react";
-import '../css/Tx.css';
+import '../css/BlockChain/Tx.css';
 import { MaskCtx } from "../Mask";
 import { DescriptionsCtx } from '../Descriptions';
 import { Button } from '../generals';
@@ -64,7 +64,7 @@ const TxDescription: React.FC<BlockDescProps> = ({ nth, onDisappear }) => {
                     xxxxxx
                 </details>
             </ul>
-            <Button className='close-button' text='X' onClick={onDisappear}/>
+            <Button className='close-button' value='X' onClick={onDisappear}/>
         </div>
     )
 }
