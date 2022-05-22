@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "LeaderNode.css",
+	"sources": [
+		"../../scss/StartTx/LeaderNode.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,YAAY,AAAC,CACT,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,KAAK,CACb,gBAAgB,CAAE,OAAkB,CACpC,aAAa,CAAE,IAAI,CACnB,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,GAAG,CACR,IAAI,CAAE,GAAG,CAKZ,AAZD,AASI,YATQ,CASR,EAAE,AAAC,CACC,UAAU,CAAE,MAAM,CACrB"
+}

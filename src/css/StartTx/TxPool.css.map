@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "TxPool.css",
+	"sources": [
+		"../../scss/StartTx/TxPool.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,QAAQ,AAAC,CACL,KAAK,CAAE,KAAK,CACZ,MAAM,CAAE,KAAK,CACb,gBAAgB,CAAE,OAAkB,CACpC,aAAa,CAAE,IAAI,CACnB,QAAQ,CAAE,QAAQ,CAClB,GAAG,CAAE,GAAG,CACR,IAAI,CAAE,GAAG,CAKZ,AAZD,AASI,QATI,CASJ,EAAE,AAAC,CACC,UAAU,CAAE,MAAM,CACrB"
+}

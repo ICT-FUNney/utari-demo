@@ -3,17 +3,27 @@ import React from 'react';
 
 interface MaskContextInterface {
     displayMask: boolean,
-    setDisplayMask: React.Dispatch<React.SetStateAction<boolean>>
+    setDisplayMask: React.Dispatch<React.SetStateAction<boolean>>,
     maskElement: HTMLElement | null,
     setMaskElement: React.Dispatch<React.SetStateAction<HTMLElement | null>>,
-    methodsOnDisappear: any[] //関数の配列にしたい
-    setMethodsOnDisappear: React.Dispatch<React.SetStateAction<any[]>> //関数の配列にしたい
+    methodsOnDisappear: any[], //関数の配列にしたい
+    setMethodsOnDisappear: React.Dispatch<React.SetStateAction<any[]>>, //関数の配列にしたい
+    disappear: () => void
 }
 
 function useMask() {
     const [displayMask, setDisplayMask] = React.useState(false);
     const [maskElement, setMaskElement] = React.useState(document.getElementById('app-mask'));
     const [methodsOnDisappear, setMethodsOnDisappear] = React.useState(Array<any>());
+    
+    function disappear() {
+        for (const method of methodsOnDisappear) {
+            method();
+        }
+        setMethodsOnDisappear([]);
+        setDisplayMask(false);
+    }
+
     return {
         displayMask,
         setDisplayMask,
@@ -21,6 +31,7 @@ function useMask() {
         setMaskElement,
         methodsOnDisappear,
         setMethodsOnDisappear,
+        disappear
     }
 }
 
@@ -34,11 +45,7 @@ const Mask: React.FC = () => {
     const value = React.useContext(MaskCtx);
     
     function handleClick() {
-        for (const method of value.methodsOnDisappear) {
-            method();
-        }
-        value.setMethodsOnDisappear([]);
-        value.setDisplayMask(false);
+        value.disappear();
     }
 
     React.useEffect(() => {
