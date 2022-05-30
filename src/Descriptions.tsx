@@ -3,7 +3,7 @@ import Mask, { MaskCtx, MaskCtxProvider } from './Mask';
 import { FlashMessage } from './generals';
 
 type Props = {
-    children: JSX.Element
+    children: JSX.Element[]
 };
 
 interface DescriptionsContextInterfece {

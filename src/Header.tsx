@@ -11,16 +11,14 @@ const Header: React.FC = () => {
             <ul>
                 <li><h3>{ userCtxValue.currentUser.name }</h3></li>
                 <li><ProfileImage img={userCtxValue.currentUser!.img} onClick={() => { }} /></li>
-                {/* <li><i className="fa-solid fa-user"></i></li> */}
-                <li><i className="fa-solid fa-user-group"></i></li>
-                <li><i className="twitter"></i></li>
+                <li><a href='#'>ログアウト</a></li>
             </ul>
         )
     } else {
         list = (
             <ul>
+                <li><a href='/login'>新規登録</a></li>
                 <li><a href='/login'>ログイン</a></li>
-                <li><a href='#'>ログアウト</a></li>
             </ul>
         )
     }

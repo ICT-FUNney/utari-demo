@@ -8,17 +8,17 @@ import { UserCtx } from '../User';
 
 const StartTx: React.FC = () => {
     const userCtxValue = React.useContext(UserCtx);
-    userCtxValue.checkLogin();
-    
     useEffect(() => {
-        userCtxValue.login('panda', 'xxx'); // 今は取り得ずずっとログインしてる状態にしておく
+        userCtxValue.login('panda4649', 'xxx'); // 今は取り得ずずっとログインしてる状態にしておく
     }, []);
     
+    userCtxValue.checkLogin();
+
     return (
         <div className='start-tx'>
             <Wallet />
-            <LeaderNode />
             <TxPool />
+            <LeaderNode />
             <div className='member-node-container'>
                 {[...Array(3)].map((_, i) => <MemberNode key={ i } num={ i } />)}
             </div>

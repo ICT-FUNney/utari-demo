@@ -16,7 +16,7 @@ const Wallet: React.FC = () => {
     const maskValue = React.useContext(MaskCtx);
     function validation() {
         if (!to) {
-            descValue.callFlashMessage('宛先を指定してください。', 'alert');
+            descValue.callFlashMessage('送金先を指定してください。', 'alert');
             return false;
         }
         if (!funny) {
@@ -35,8 +35,9 @@ const Wallet: React.FC = () => {
         e.preventDefault();
         if (!validation()) return;
 
-        const t = Math.floor(Math.random() * 1000000); //flash message用
-        const key = 'confirm-tx' + t;
+        setDisplayUserList(false);
+
+        const key = 'confirm-tx';
         
         function handleSend() {
             setTo('');
@@ -48,8 +49,13 @@ const Wallet: React.FC = () => {
                 descValue.removeDescription(key);
             }
         }
+
+        function handleCancel() {
+            descValue.removeDescription(key);
+            maskValue.disappear();
+        }
         
-        const confirmTx = <ConfirmTx key={key} to={to} funny={funny} onSend={ handleSend } />
+        const confirmTx = <ConfirmTx key={key} to={to} funny={funny} onSend={handleSend} onCancel={handleCancel} />
         descValue.addDescription(key, confirmTx);
         maskValue.setDisplayMask(true);
         maskValue.setMethodsOnDisappear((prev) => {
@@ -66,7 +72,7 @@ const Wallet: React.FC = () => {
             <h2>トランザクション 作成</h2>
             <form onSubmit={handleSubmit as React.FormEventHandler} autoComplete='off'>
                 <label>
-                    宛先 (ID): <br />
+                    送金先 (ID): <br />
                     <input type='text' name='to' value={to} onChange={(e) => { setTo(e.target.value) }} />
                     <span className='friends-btn' title='送金可能なユーザ' onClick={() => { setDisplayUserList((prev) => { return !prev })}}><FontAwesomeIcon icon={faUserGroup} className='center'/></span>
                 </label>
@@ -76,7 +82,7 @@ const Wallet: React.FC = () => {
                     <input type='text' name='funny' value={funny} onChange={(e) => { setFunny(e.target.value) }} />
                 </label>
 
-                <input className='submit' type='submit' value='確認' />
+                <input className='btn submit' type='submit' value='確認' />
             </form>
             {(displayUserList) ? <UserList setTo={setTo} onSubmit={() => { setDisplayUserList(false) }} /> : null}
         </div>
@@ -152,31 +158,60 @@ const UserListItem: React.FC<UserListItemProps> = ({i, user, className, onClick}
 type ConfirmTxProps = {
     to: string,
     funny: string,
-    onSend: () => void
+    onSend: () => void,
+    onCancel: () => void
 };
-const ConfirmTx: React.FC<ConfirmTxProps> = ({ to, funny, onSend }) => {
-    
+const ConfirmTx: React.FC<ConfirmTxProps> = ({ to, funny, onSend, onCancel }) => {
+    const userCtxValue = React.useContext(UserCtx);
+    const user = userCtxValue.users[to];
+
+    if (!userCtxValue.currentUser) return null;
+
     return (
         <div className='confirm-tx center'>
-            <h3>送金をクリックするとトランザクションが確定します。</h3>
+            <h4>以下の内容でトランザクションを作成します。</h4>
+            <h4>送金をクリックするとトランザクションが確定します。</h4>
+            <p>※この操作は元に戻せません。</p>
             <table className='tx-table'>
                 <tbody>
                     <tr>
-                        <th className='th'>送金先</th>
+                        <th className='th'>送金元</th>
                         <td>
-                            <p>id: { to }</p>
-                            <p>名前: {'panda'}</p>
+                            <div className='user-info'>
+                                <img src={userCtxValue.currentUser.img} alt='user image' />
+                                <div>
+                                    <p>id: &emsp;&nbsp;<span className='bold'>{userCtxValue.currentUser.id}</span></p>
+                                    <p>名前: <span className='bold'>{userCtxValue.currentUser.name}</span></p>
+                                </div>
+                            </div>
                         </td>
                     </tr>
+
+                    <tr>
+                        <th className='th'>送金先</th>
+                        <td>
+                            <div className='user-info'>
+                                <img src={user.img} alt='user image' />
+                                <div>
+                                    <p>id: &emsp;&nbsp;<span className='bold'>{to}</span></p>
+                                    <p>名前: <span className='bold'>{user.name}</span></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
                     <tr>
                         <th className='th'>funny</th>
                         <td>
-                            <p><span>{ funny }</span> funny</p>
+                            <p><span className='bold'>{ funny }</span> funny</p>
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <Button className='submit' value='送金' onClick={onSend} />
+            <div className='btn-container'>
+                <Button className='cancel' value='キャンセル' onClick={onCancel} />
+                <Button className='submit' value='送金' onClick={onSend} />
+            </div>
         </div>
     )
 }

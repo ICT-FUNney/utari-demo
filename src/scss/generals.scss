@@ -30,13 +30,19 @@
     background-color: rgb(238, 242, 185);
 }
 
-.submit {
-    background-color: rgb(66, 149, 226);
+.btn {
     border-radius: 4px;
     border-style: double;
     cursor: pointer;
-    
     &:hover {
         opacity: 0.5;
     }
+}
+
+.submit {
+    background-color: rgb(66, 149, 226);
+}
+
+.cancel {
+    background-color: rgb(247, 215, 215);
 }

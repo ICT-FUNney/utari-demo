@@ -12,9 +12,9 @@ import './css/App.css';
 
 function App() {
     return (
-        <UserCtx.Provider value={ useUser() }>
+        <div className='App'>
+            <UserCtx.Provider value={ useUser() }>
                 <DescriptionsViewer>
-                <div className='App'>
                     <Header/>
                     <BrowserRouter>
                         <Routes>
@@ -25,9 +25,9 @@ function App() {
                             <Route path='*' element={<Page404 />}/>
                         </Routes>
                     </BrowserRouter>
-                </div>
-            </DescriptionsViewer>
-        </UserCtx.Provider>
+                </DescriptionsViewer>
+            </UserCtx.Provider>
+        </div>
     );  
 }
 
