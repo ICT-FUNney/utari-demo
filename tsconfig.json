@@ -16,11 +16,14 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    // "isolatedModules": true,
+    "isolatedModules": false,//ts-node用
     "noEmit": true,
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "src",
+  // , "lib",
+  ],
+  "extends": "./src/BlockChain/tsconfig.json"
 }
