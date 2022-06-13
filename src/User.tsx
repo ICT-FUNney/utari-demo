@@ -7,13 +7,15 @@ interface UserDataInterface {
     img: string
 }
 
+/**
+ * ユーザの情報
+ */
 export class User {
     private _id: string;
     private _name: string;
     private _img: string;
     
     constructor(params: UserDataInterface) {
-    // constructor(id: string, name: string, img: string) {
         this._id = params.id;
         this._name = params.name;
         this._img = params.img;
@@ -27,19 +29,29 @@ export class User {
 export interface UserContextInterface {
     currentUser: User | null, //ログイン中のユーザ
     login: (id: string, password: string) => boolean,
-    users: { [id: string]: User }, //ノードが立ってる全ユーザ. ユーザ数が増えると重くなるので要改善(友達のみ表示とか)
+    users: { [id: string]: User }, //ノードが立ってる全ユーザ. ユーザ数が増えると重くなるので要改善(友達のみ表示とか) これクライアント側で保持する必要無い気がする
     addUser: (user: User) => boolean,
     checkLogin: () => void
 }
 
+/**
+ * @param id
+ * @param password
+ * @returns ユーザデータ取得に成功したらUserCtxInterFace, 失敗したらnullを返す
+ */
 // ユーザの情報をサーバからfetchする
 function fetchUserData(id: string, password: string) {
     if (false) return null; // パスワードの不一致などでfetchに失敗した場合
-    return {
+    
+    /**
+     * とりあえずPanda Xでログインすることにする
+     */
+    const temp = {
         id: id,
         name: 'Panda X',
         img: `${process.env.PUBLIC_URL}/img/panda_x.png`
-    }
+    };
+    return temp;
 }
 
 export function useUser() {
@@ -59,8 +71,6 @@ export function useUser() {
         'yellow789': new User({ id: 'yellow789', name: 'Panda Yellow', img: `${process.env.PUBLIC_URL}/img/panda_yellow.png` }),
     }
     const [users, _addUser] = React.useState(_users);
-    //
-    // const [users, _addUser] = React.useState({} as { [id: number]: User });
     function addUser(user: User) {
         if (false) { // 不正なユーザー(登録済みなど)の場合はfalseを返す
             return false;
@@ -74,8 +84,9 @@ export function useUser() {
         return true;
     }
 
-    // ログインしてない場合、ログイン画面へ
-    
+    /**
+     * ログインしてない場合、ログイン画面へ
+     */ 
     function checkLogin() {
         // if (!currentUser) {
         //     window.location.href = '/login';
@@ -102,7 +113,5 @@ export const ProfileImage: React.FC<ProfileImgProps> = ({ img, onClick }) => {
         </div>
     )
 }
-
-
 
 export const UserCtx = React.createContext({} as UserContextInterface);

@@ -8,6 +8,11 @@ import { faUserGroup } from '@fortawesome/free-solid-svg-icons';
 
 import '../css/StartTx/Wallet.css';
 
+/**
+ * ユーザがTxを入力する部分。
+ * 「Wallet」という名前が適切かは不明。
+ * @returns {HTMLElement}
+ */
 const Wallet: React.FC = () => {
     const [to, setTo] = React.useState('');
     const [funny, setFunny] = React.useState('');
@@ -95,6 +100,13 @@ type UserListProps = {
     setTo: React.Dispatch<React.SetStateAction<string>>,
     onSubmit: () => void
 };
+/**
+ * 送信可能なユーザ一覧を表示
+ * @param setTo 親コンポーネントのtoを更新する関数
+ * @param onSubmit 送信ボタンが押されたときの処理
+ * @returns {HTMLElement}
+ * 
+ */
 const UserList: React.FC<UserListProps> = ({ setTo, onSubmit }) => {
     const userCtxValue = React.useContext(UserCtx);
     const [selectedUser, setSelectedUser] = React.useState(-1); // 何番目のuserListItemが選択されているか
@@ -103,26 +115,26 @@ const UserList: React.FC<UserListProps> = ({ setTo, onSubmit }) => {
     const [classNames, setClassNames] = React.useState([...Array(len)].map(() => { return ''; }));
     const users = Object.values(userCtxValue.users).map((user, i) => {
         return (
-            <li key={i}><UserListItem i={i} className={classNames[i]} user={user} onClick={handleClickListItem} /></li>
+            <li key={i}><UserListItem num={i} className={classNames[i]} user={user} onClick={handleClickListItem} /></li>
         )
     });
     
-    function handleClickListItem(i: number, userId: string) {
+
+    function handleClickListItem(num: number, userId: string) {
         setTo(userId);
-        if (selectedUser < 0 || selectedUser === i) {
+        if (selectedUser < 0 || selectedUser === num) {
             let new_classNames = classNames;
-            new_classNames[i] = 'selected';
+            new_classNames[num] = 'selected';
             setClassNames(new_classNames);
-            setSelectedUser(i);
+            setSelectedUser(num);
             return;
         }
         
-        
         let new_classNames = classNames;
         new_classNames[selectedUser] = '';
-        new_classNames[i] = 'selected';
+        new_classNames[num] = 'selected';
         setClassNames(new_classNames);
-        setSelectedUser(i);
+        setSelectedUser(num);
         
     }
 
@@ -138,14 +150,19 @@ const UserList: React.FC<UserListProps> = ({ setTo, onSubmit }) => {
 }
 
 type UserListItemProps = {
-    i: number,
+    num: number,
     className: string,
     user: User,
     onClick: (id: number, userId: string) => void
 };
-const UserListItem: React.FC<UserListItemProps> = ({i, user, className, onClick}) => {
+/**
+ * 
+ * @param {number} num  
+ * @returns 
+ */
+const UserListItem: React.FC<UserListItemProps> = ({num, user, className, onClick}) => {
     function handleClick() {
-        onClick(i, user.id);
+        onClick(num, user.id);
     }
 
     return (
@@ -156,13 +173,20 @@ const UserListItem: React.FC<UserListItemProps> = ({i, user, className, onClick}
     )
 }
 
-
 type ConfirmTxProps = {
     to: string,
     funny: string,
     onSend: () => void,
     onCancel: () => void
 };
+/**
+ * 
+ * @param to 誰にfunnyを送るか
+ * @param funny 送るfunnyの値
+ * @param onSend 送金ボタンが押された時の処理
+ * @param onCancel キャンセルボタンが押された時の処理
+ * @returns 
+ */
 const ConfirmTx: React.FC<ConfirmTxProps> = ({ to, funny, onSend, onCancel }) => {
     const userCtxValue = React.useContext(UserCtx);
     const user = userCtxValue.users[to];

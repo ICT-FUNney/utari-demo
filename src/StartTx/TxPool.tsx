@@ -1,6 +1,10 @@
 import React from 'react';
 import '../css/StartTx/TxPool.css';
 
+/**
+ * Txプール
+ * @returns {HTMLElement}
+ */
 const TxPool: React.FC = () => {
     return (
         <div className='tx-pool-container'>

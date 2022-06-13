@@ -4,6 +4,11 @@ import '../css/StartTx/MemberNode.css';
 type Props = {
     num: number
 };
+/**
+ * メンバーノード
+ * @param props
+ * @returns {HTMLElement}
+ */
 const MemberNode: React.FC<Props> = ({ num }) => {
     return (
         <div className='member-node'>

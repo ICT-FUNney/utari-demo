@@ -40,22 +40,25 @@ export const MaskCtx = React.createContext({} as MaskContextInterface);
 type Props = {
     children: JSX.Element
 };
-
+/**
+    マスク
+ * @returns {HTMLElement}
+ */
 const Mask: React.FC = () => {
-    const value = React.useContext(MaskCtx);
+    const maskCtxValue = React.useContext(MaskCtx);
     
     function handleClick() {
-        value.disappear();
+        maskCtxValue.disappear();
     }
 
     React.useEffect(() => {
         const maskElement = document.getElementById('app-mask');
         if (maskElement) {
-            value.setMaskElement(maskElement);
+            maskCtxValue.setMaskElement(maskElement);
         }
     });
 
-    const mask = (value.displayMask) ? <div id='app-mask' onClick={handleClick}></div> : null;
+    const mask = (maskCtxValue.displayMask) ? <div id='app-mask' onClick={handleClick}></div> : null;
     return mask;
 }
 

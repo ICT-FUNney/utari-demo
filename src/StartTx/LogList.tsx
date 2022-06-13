@@ -1,3 +1,4 @@
+import { ReactComponentElement } from 'react';
 import '../css/StartTx/LogList.css';
 
 const LogList: React.FC = () => {
@@ -12,14 +13,12 @@ const LogList: React.FC = () => {
         { who: "リーダーノード", action: "TxPoolに送る", func: "func()" },
         // リーダーが定期実行
         {who: "リーダーノード", action: "originブロック作成", func: "func()"},
-        {who: "リーダーノード", action: "originブロック作成", func: "func()"},
         {who: "リーダーノード", action: "Txのhashmap作成", func: "func()"},
         {who: "リーダーノード", action: "ブロック作成", func: "func()"},
         {who: "リーダーノード", action: "各メンバーノードに渡す", func: "func()"},
         {who: "メンバーノード", action: "ハッシュ値計算", func: "func()"},
         {who: "メンバーノード", action: "リーダーノードに結果を返す", func: "func()"},
         {who: "リーダーノード", action: "ブロックチェーンに記載", func: "func()"},
-
     ];
 
     const logs = logParams.map((log, i) => {
@@ -43,6 +42,11 @@ interface LogPropsInterface {
 type LogProps = {
     props: LogPropsInterface
 };
+/**
+ * 
+ * @param props
+ * @returns {HTMLElement}
+ */
 const Log: React.FC<LogProps> = ({props}) => {
     return (
         <div className='log-list-item'>

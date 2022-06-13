@@ -1,6 +1,10 @@
 import React from 'react';
 import '../css/StartTx/LeaderNode.css';
 
+/**
+ * リーダーノード
+ * @returns {HTMLElement}
+ */
 const LeaderNode: React.FC = () => {
     return (
         <div className='leader-node-container'>

@@ -3,6 +3,11 @@ import { UserCtx } from './User';
 import { DescriptionsCtx } from './Descriptions';
 import './css/Login.css';
 
+/**
+ * ログイン画面
+ * 現段階では、なにも入力せずにログインボタン押すだけでPanda Xでログインできる
+ * @returns {HTMLElement}
+ */
 const Login: React.FC = () => {
     const [id, setId] = React.useState('');
     const [password, setPassword] = React.useState(''); //passwordは平文のまま管理していいのか？
