@@ -32,7 +32,11 @@ const Wallet: React.FC = () => {
             descValue.callFlashMessage('funnyは半角数字で指定してください。', 'alert');
             return false;
         }
-        
+        if (Number(funny) <= 0) {
+            descValue.callFlashMessage('funnyは0より大きい値で指定してください。', 'alert');
+            return false;
+        }
+
         return true;
     }
     
