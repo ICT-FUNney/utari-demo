@@ -67,25 +67,27 @@ const Wallet: React.FC = () => {
     }
 
     return (
-        // <div className='wallet center'>
-        <div className='wallet'>
-            <h2>トランザクション 作成</h2>
-            <form onSubmit={handleSubmit as React.FormEventHandler} autoComplete='off'>
-                <label>
-                    送金先 (ID): <br />
-                    <input type='text' name='to' value={to} onChange={(e) => { setTo(e.target.value) }} />
-                    <span className='friends-btn' title='送金可能なユーザ' onClick={() => { setDisplayUserList((prev) => { return !prev })}}><FontAwesomeIcon icon={faUserGroup} className='center'/></span>
-                </label>
-                
-                <label>
-                    funny: <br />
-                    <input type='text' name='funny' value={funny} onChange={(e) => { setFunny(e.target.value) }} />
-                </label>
+        <div className='wallet-container'>
+            <div className='wallet'>
+                <h3>トランザクション 作成</h3>
+                <form onSubmit={handleSubmit as React.FormEventHandler} autoComplete='off'>
+                    <label>
+                        送金先 (ID): <br />
+                        <input type='text' name='to' value={to} onChange={(e) => { setTo(e.target.value) }} />
+                        <span className='friends-btn' title='送金可能なユーザ' onClick={() => { setDisplayUserList((prev) => { return !prev })}}><FontAwesomeIcon icon={faUserGroup} className='center'/></span>
+                    </label>
+                    
+                    <label>
+                        funny: <br />
+                        <input type='text' name='funny' value={funny} onChange={(e) => { setFunny(e.target.value) }} />
+                    </label>
 
-                <input className='btn submit' type='submit' value='確認' />
-            </form>
-            {(displayUserList) ? <UserList setTo={setTo} onSubmit={() => { setDisplayUserList(false) }} /> : null}
+                    <input className='btn submit' type='submit' value='確認' />
+                </form>
+                {(displayUserList) ? <UserList setTo={setTo} onSubmit={() => { setDisplayUserList(false) }} /> : null}
+            </div>
         </div>
+
     )
 }
 
@@ -126,7 +128,7 @@ const UserList: React.FC<UserListProps> = ({ setTo, onSubmit }) => {
 
     return (
         <div className='user-list-container'>
-            <h2>送金可能なユーザ</h2>
+            <h3>送金可能なユーザ</h3>
             <ul className='user-list'>
                 { users }
             </ul>

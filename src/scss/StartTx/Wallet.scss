@@ -1,12 +1,15 @@
 .wallet {
-    width: 300px;
-    height: 500px;
+    width: 230px;
+    height: 420px;
     border-radius: 5px;
     background-color: white;
-    position: absolute; //仮
-    top: 50%; //仮
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2%;
+    z-index: 1;
 
-    h2 {
+    h3 {
         text-align: center;
     }
 
@@ -19,7 +22,7 @@
 
         .submit {
             width: 80px;
-            height: 50px;
+            height: 40px;
             font-size: 20px;
         }
     }
@@ -32,8 +35,8 @@
         background-color: rgb(177, 202, 238);
         cursor: pointer;
         position: absolute;
-        top: 24.5%;
-        left: 78%;
+        top: 27%;
+        right: 3%;
 
         &:hover {
             opacity: 0.5;
@@ -62,7 +65,7 @@
 
     .user-list {
         width: 100%;
-        height: 360px;
+        height: 300px;
         $border-color: rgb(215, 209, 209);
         border-top: 1px solid $border-color;
         border-bottom: 1px solid $border-color;
@@ -109,7 +112,7 @@
         width: 60px;
         height: 30px;
         margin-left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -15%);
     }
 }
 

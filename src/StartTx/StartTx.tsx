@@ -5,6 +5,7 @@ import MemberNode from './MemberNode';
 import TxPool from './TxPool';
 import '../css/StartTx/StartTx.css';
 import { UserCtx } from '../User';
+import LogList from './LogList';
 
 const StartTx: React.FC = () => {
     const userCtxValue = React.useContext(UserCtx);
@@ -14,14 +15,20 @@ const StartTx: React.FC = () => {
     
     userCtxValue.checkLogin();
 
-    return (
-        <div className='start-tx'>
+    const memberNodes = <div className='member-nodes-container'>
+        {[...Array(3)].map((_, i) => { return <MemberNode key={i} num={i + 1} /> })}
+    </div>
+
+return (
+    <div className='start-tx'>
             <Wallet />
-            <TxPool />
             <LeaderNode />
-            <div className='member-node-container'>
-                {[...Array(3)].map((_, i) => <MemberNode key={ i } num={ i } />)}
-            </div>
+            {/* <div className='member-nodes-container'>
+                {[...Array(3)].map((_, i) => { return <MemberNode key={i} num={i + 1} /> })}
+            </div> */}
+            {memberNodes}   
+            <TxPool />
+            <LogList />
         </div>
     )
 }

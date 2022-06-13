@@ -1,0 +1,57 @@
+.log-list-container {
+    width: 300px;
+    height: 100%;
+    border: 1px solid black;
+    overflow: scroll;
+}
+
+.log-list {
+    padding-left: 30px;
+    background-color: rgb(218, 214, 214);
+    margin: 0;
+    border-radius: 10px;
+    
+    > li {
+        height: 70px;
+        border-bottom: 1px solid rgb(236, 233, 233);
+
+        &:hover {
+            cursor: pointer;
+            opacity: 0.5;
+        }
+    }
+    
+    .log-list-item {
+        height: 100%;
+        p {
+            margin: 0;
+        }
+        .action {
+
+        }
+
+        ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: space-around;
+            font-size: 12px;
+            color: rgb(145, 142, 142);
+            margin-top: 25px;
+            padding: 0px;
+        }
+
+        .func, .who {
+            width: 120px;
+            // text-align: right;
+        }
+
+        // .func {
+        //     // font-size: 14px;
+        // }
+
+        // .who {
+        
+        // }
+    }
+}
+    

@@ -3,8 +3,10 @@ import '../css/StartTx/LeaderNode.css';
 
 const LeaderNode: React.FC = () => {
     return (
-        <div className='leader-node'>
-            <h2>リーダーノード</h2>
+        <div className='leader-node-container'>
+            <div className='leader-node center'>
+                <h2>リーダーノード</h2>
+            </div>
         </div>
     )
 }
